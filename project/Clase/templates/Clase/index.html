@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+   Comisiones 
+{% endblock title %}
+
+{% block content %}
+    {% for comision in comisiones %}
+        <p>{{ comision.nombre }} | {{ comision.curso }} | {{ comision.profesor }}</p>
+    {% endfor %}    
+{% endblock content %}
