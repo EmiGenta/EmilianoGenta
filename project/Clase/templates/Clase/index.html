@@ -5,6 +5,14 @@
 {% endblock title %}
 
 {% block content %}
+    <div class="fs-3 pb-4">
+        <a href="{% url 'Clase:curso_create' %}">Ingresar Cursos</a>
+    </div>
+    <div class="py-lg-4">
+        <form action="{% url 'Clase:home' %}" method="get">
+            <input type="text" name="consulta" placeholder="Buscar...">
+        </form>
+    </div>
     {% for comision in comisiones %}
         <p>{{ comision.nombre }} | {{ comision.curso }} | {{ comision.profesor }}</p>
     {% endfor %}    
