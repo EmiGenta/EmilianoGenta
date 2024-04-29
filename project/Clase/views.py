@@ -36,13 +36,3 @@ def comision_create(request):
     else:  # request.method == "GET"
         form = forms.ComisionForm()
     return render(request, "Clase/comision_create.html", context={"form": form})
-
-def curso_create_new(request):
-    if request.method == "POST":
-        form = forms.CursoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("Clase:curso_list")
-    else:  # request.method == "GET"
-        form = forms.CursoForm()
-    return render(request, "Clase/curso_create_new.html", {"form": form})
