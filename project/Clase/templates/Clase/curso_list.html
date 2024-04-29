@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+    <h1>Lista de Cursos</h1>
+    <ul>
+        {% for curso in cursos %}
+            <li>{{ curso.nombre }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Ingresar Curso</h2>
+    <form action="{% url 'Clase:curso_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock content %}

@@ -4,7 +4,7 @@ from django.db import models
 class Curso(models.Model):
     """Definicion de Cursos"""
     nombre = models.CharField(max_length=100)
-    cant_max_alumnos = models.PositiveBigIntegerField()
+    cant_max_alumnos = models.PositiveBigIntegerField(default=1000, null=True, blank=True, verbose_name="Cantidad máxima de alumnos")
 
     def __str__(self) -> str:
         return self.nombre
