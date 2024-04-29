@@ -6,7 +6,8 @@
 
 {% block contenido %}
     <!-- Inicio del contenido del formulario -->
-    <form action="/comision_create/" method="post">{% csrf_token %}
+    <form action="" method="post">
+    {% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>

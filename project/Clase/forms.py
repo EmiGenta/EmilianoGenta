@@ -21,3 +21,8 @@ class ComisionForm(forms.ModelForm):
             "estudiante": forms.TextInput(attrs={"class": "form-control"}),
             "profesor": forms.TextInput(attrs={"class": "form-control"}),
         }
+
+class CursoFormNew(forms.ModelForm):
+    class Meta:
+        model = models.Curso
+        fields = "__all__"
