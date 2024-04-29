@@ -5,13 +5,12 @@
 {% endblock titulo %}
 
 {% block contenido %}
-    
-    <form action="" method="post">
-        {% csrf_token %}
+    <!-- Inicio del contenido del formulario -->
+    <form action="/comision_create/" method="post">{% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
-
+    <!-- Fin del contenido del formulario -->
 {% endblock contenido %}

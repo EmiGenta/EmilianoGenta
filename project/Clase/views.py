@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from . import models, forms
-from .models import Curso
+from .models import Curso, Comision
 
 # Creamos el home
 def home(request):
@@ -28,7 +28,6 @@ def curso_create(request):
     return render(request, "Clase/curso_create.html", {"form": form})
 
 def comision_create(request):
-    print("Entrando a la vista comision_create")
     if request.method == "POST":
         form = forms.ComisionForm(request.POST)
         if form.is_valid():
@@ -36,5 +35,4 @@ def comision_create(request):
             return redirect("Clase:home")
     else:  # request.method == "GET"
         form = forms.ComisionForm()
-    print("Renderizando la plantilla comision_create.html")  # Mensaje de depuración
-    return render(request, "Clase/comision_create.html", {"form": form})
+    return render(request, "Clase/comision_create.html", context={"form": form})
