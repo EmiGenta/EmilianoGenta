@@ -5,11 +5,12 @@
 
 {% block content %}
     <div class="fs-3 pb-4">
-        <a href="{% url 'Clase:comision_create' %}">Buscar Comisiones</a>
+        <a href="{% url 'Clase:comision_create' %}">Crear Comision</a>
     </div>
     <div class="py-lg-4">
         <form action="{% url 'Clase:home' %}" method="get">
-            <input type="text" name="consulta" placeholder="Buscar...">
+            <input type="text" name="consulta" placeholder="Buscar Comision...">
+            <button type="submit">Buscar</button>
         </form>
     </div>
     <ul>

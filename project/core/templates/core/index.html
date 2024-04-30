@@ -1,12 +1,13 @@
 {% extends "core/base.html" %}
 
 {% block title %}
-    <h1>Bienvenido a la plataforma de e-learning más grande de Latinoamérica</h1>
+    <h1>Administración: Plataforma de e-learning más grande de Latinoamérica</h1>
 {% endblock title %}
 
 {% block content %}
     <ul>
-        <li><a href="{% url 'Clase:home' %}">Clase</a></li>
-        <li><a href="{% url 'Clase:curso_list' %}">Cursos</a></li>
+        <li><a href="{% url 'Clase:home' %}">Ver Comisiones</a></li>
+        <li><a href="{% url 'Clase:curso_list' %}">Ver Cursos</a></li>
+        <li><a href="{% url 'Clase:estudiantes_list' %}">Estudiantes</a></li>
     </ul>
 {% endblock content %}

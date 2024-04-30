@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from . import models, forms
-from .models import Curso, Comision
+from .models import Curso, Comision, Estudiante
 
 # Creamos el home
 def home(request):
@@ -36,3 +36,15 @@ def comision_create(request):
     else:  # request.method == "GET"
         form = forms.ComisionForm()
     return render(request, "Clase/comision_create.html", context={"form": form})
+
+# def estudiantes_list(request):
+#     estudiantes = Estudiante.objects.all()
+#     return render(request, 'Clase/estudiantes_list.html', {'estudiantes': estudiantes})
+
+def estudiantes_list(request):
+    consulta = request.GET.get("consulta", None)
+    if consulta:
+        estudiantes = Estudiante.objects.filter(nombre__icontains=consulta)
+    else:
+        estudiantes = Estudiante.objects.all()
+    return render(request, 'Clase/estudiantes_list.html', context={'estudiantes': estudiantes})
