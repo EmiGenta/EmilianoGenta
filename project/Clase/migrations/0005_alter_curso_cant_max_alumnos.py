@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Clase', '0004_alter_curso_options_curso_cant_max_alumnos'),
+        ('clase', '0004_alter_curso_options_curso_cant_max_alumnos'),
     ]
 
     operations = [

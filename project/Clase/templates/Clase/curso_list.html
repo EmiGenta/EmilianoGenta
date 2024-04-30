@@ -12,7 +12,7 @@
     </ul>
 
     <h2>Ingresar Curso</h2>
-    <form action="{% url 'Clase:curso_create' %}" method="post">
+    <form action="{% url 'clase:curso_create' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Guardar</button>
