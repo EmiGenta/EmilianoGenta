@@ -1,20 +1,30 @@
 {% extends 'core/base.html' %}
 
 {% block title %}
+    <h1 style="color: blue; font-weight: bold; font-size: 24px; text-decoration: underline;">Listado de Cursos</h1>
 {% endblock title %}
 
 {% block content %}
-    <h1>Lista de Cursos</h1>
-    <ul>
-        {% for curso in cursos %}
-            <li>{{ curso.nombre }}</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Ingresar Curso</h2>
+    <div>
+        <select name="curso" id="curso">
+            {% for curso in cursos %}
+                <option value="{{ curso.id }}">{{ curso.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div style="margin-top: 60px;" class="py-lg-4">
+        <h2>Ingresar Curso</h2>
+    </div>
     <form action="{% url 'clase:curso_create' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Guardar</button>
     </form>
 {% endblock content %}
+
+
+<!-- <ul>
+    {% for curso in cursos %}
+        <li>{{ curso.nombre }}</li>
+    {% endfor %}
+</ul> -->
