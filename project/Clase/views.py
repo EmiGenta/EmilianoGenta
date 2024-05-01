@@ -5,17 +5,32 @@ from .models import Curso, Comision, Estudiante, Profesor
 # Creamos el home
 def home(request):
     consulta = request.GET.get("consulta", None)
+    form = forms.ComisionForm()
     if consulta:
         print(consulta)
         query = models.Comision.objects.filter(nombre__icontains=consulta)
     else:
         query = models.Comision.objects.all()
-    context = {"comisiones": query} #consulta a la bdd
+    context = {"comisiones": query, "form": form} #consulta a la bdd
     return render(request, "clase/index.html", context)
+
+def comision_create(request):
+    if request.method == "POST":
+        form = forms.ComisionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print("Formulario válido")
+            return redirect("clase:home")
+        else:
+            print("Algun dato está mal")
+    else:  # request.method == "GET"
+        form = forms.ComisionForm()
+    return render(request, "clase/comision_create.html", {"form": form})
 
 def curso_list(request):
     cursos = Curso.objects.all()
-    return render(request, 'clase/curso_list.html', {'cursos': cursos})
+    form = forms.CursoForm()
+    return render(request, 'clase/curso_list.html', {"form": form, "cursos": cursos})
 
 def curso_create(request):
     if request.method == "POST":
@@ -26,20 +41,6 @@ def curso_create(request):
     else:  # request.method == "GET"
         form = forms.CursoForm()
     return render(request, "clase/curso_list.html", {"form": form})
-
-def comision_create(request):
-    if request.method == "POST":
-        form = forms.ComisionForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("clase:comision_create")
-    else:  # request.method == "GET"
-        form = forms.ComisionForm()
-    return render(request, "clase/comision_create.html", context={"form": form})
-
-# def estudiantes_list(request):
-#     estudiantes = Estudiante.objects.all()
-#     return render(request, 'Clase/estudiantes_list.html', {'estudiantes': estudiantes})
 
 def estudiantes_list(request):
     consulta = request.GET.get("consulta", None)

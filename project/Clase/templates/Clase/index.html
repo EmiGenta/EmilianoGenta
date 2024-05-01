@@ -16,8 +16,11 @@
             <li>{{ comision.nombre }} | {{ comision.curso }} | {{ comision.profesor }}</li>
         {% endfor %}  
     </ul>
-    <div style="margin-top: 20px;" class="fs-3 pb-4">
-        <a href="{% url 'clase:comision_create' %}">Crear Comision</a>
-    </div>
+    <h2>Crear nueva comisión</h2>
+    <form action="{% url 'clase:comision_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
       
 {% endblock content %}
