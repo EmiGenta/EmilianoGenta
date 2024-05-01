@@ -25,14 +25,14 @@ def curso_create(request):
             return redirect("clase:curso_list")
     else:  # request.method == "GET"
         form = forms.CursoForm()
-    return render(request, "clase/curso_create.html", {"form": form})
+    return render(request, "clase/curso_list.html", {"form": form})
 
 def comision_create(request):
     if request.method == "POST":
         form = forms.ComisionForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("clase:home")
+            return redirect("clase:comision_create")
     else:  # request.method == "GET"
         form = forms.ComisionForm()
     return render(request, "clase/comision_create.html", context={"form": form})
