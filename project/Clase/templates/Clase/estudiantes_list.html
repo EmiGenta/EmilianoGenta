@@ -13,7 +13,9 @@
     </div>
     <ul>
         {% for estudiante in estudiantes %}
-            <li>{{ estudiante.nombre }} {{ estudiante.apellido }}</li>
+            <li>{{ estudiante.nombre }} {{ estudiante.apellido }}
+                <a href="{% url 'clase:estudiantes_detail' estudiante.id %}">Detalle</a>
+            </li>
         {% endfor %}
     </ul>
     <div style="margin-top: 60px;" class="py-lg-4">

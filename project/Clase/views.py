@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . import models, forms
 from .models import Curso, Comision, Estudiante, Profesor
 
@@ -60,6 +60,10 @@ def estudiantes_create(request):
     else:  # request.method == "GET"
         form = forms.EstudianteForm()
     return render(request, "clase/estudiantes_list.html", {"form": form})
+
+def estudiantes_detail(request, pk: int):
+    estudiante = models.Estudiante.objects.get(id=pk)
+    return render(request, "clase/estudiantes_detail.html", {"estudiante": estudiante})
 
 def profesores_list(request):
     consulta = request.GET.get("consulta", None)
