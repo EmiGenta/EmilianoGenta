@@ -16,18 +16,28 @@ class Curso(models.Model):
 class Estudiante(models.Model):
     """Definicion de clase Estudiantes"""
     nombre = models.CharField(max_length=200)
+    apellido = models.CharField(max_length=200, default='')
+    cedula_de_identidad = models.CharField(max_length=15, default='')
+    email = models.EmailField(max_length=254, default='')
+    pais = models.CharField(max_length=50, default='')
+    formacion_academica = models.CharField(max_length=200, default='')
 
     def __str__(self) -> str:
         """Representa una instancia del modelo como una cadena de texto"""
-        return self.nombre
+        return f"{self.nombre} {self.apellido}"
 
 class Profesor(models.Model):
     """Definicion de clase Profesores"""
     nombre = models.CharField(max_length=200)
+    apellido = models.CharField(max_length=200, default='')
+    cedula_de_identidad = models.CharField(max_length=15, default='')
+    email = models.EmailField(max_length=254, default='')
+    pais = models.CharField(max_length=50, default='')
+    profesion = models.CharField(max_length=200, default='')
 
     def __str__(self) -> str:
         """Representa una instancia del modelo como una cadena de texto"""
-        return self.nombre
+        return f"{self.nombre} {self.apellido}"
     
 class Comision(models.Model):
     """Definicion de Comisiones"""

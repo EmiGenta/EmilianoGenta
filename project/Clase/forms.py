@@ -11,6 +11,32 @@ class CursoForm(forms.ModelForm):
             "cant_max_alumnos": forms.TextInput(attrs={"class": "form-control"}),
         }
 
+class EstudianteForm(forms.ModelForm):
+    class Meta:
+        model = models.Estudiante
+        fields = "__all__"
+        widgets = {
+            "nombre": forms.TextInput(attrs={"class": "form-control"}),
+            "apellido": forms.TextInput(attrs={"class": "form-control"}),
+            "cedula_de_identidad": forms.TextInput(attrs={"class": "form-control"}),
+            "email": forms.TextInput(attrs={"class": "form-control"}),
+            "pais": forms.TextInput(attrs={"class": "form-control"}),
+            "formacion_academica": forms.TextInput(attrs={"class": "form-control"}),  
+        }
+
+class ProfesorForm(forms.ModelForm):
+    class Meta:
+        model = models.Profesor
+        fields = "__all__"
+        widgets = {
+            "nombre": forms.TextInput(attrs={"class": "form-control"}),
+            "apellido": forms.TextInput(attrs={"class": "form-control"}),
+            "cedula_de_identidad": forms.TextInput(attrs={"class": "form-control"}),
+            "email": forms.TextInput(attrs={"class": "form-control"}),
+            "pais": forms.TextInput(attrs={"class": "form-control"}),
+            "profesion": forms.TextInput(attrs={"class": "form-control"}),  
+        }
+
 class ComisionForm(forms.ModelForm):
     class Meta:
         model = models.Comision
@@ -19,7 +45,7 @@ class ComisionForm(forms.ModelForm):
             "nombre": forms.TextInput(attrs={"class": "form-control"}),
             "curso": forms.Select(attrs={"class": "form-control"}),
             "estudiante": forms.SelectMultiple(attrs={"class": "form-control"}),
-            "profesor": forms.Select(attrs={"class": "form-control"}),
+            "profesor": forms.Select(attrs={"class": "form-control"}),          
         }
     
     def __init__(self, *args, **kwargs):

@@ -13,8 +13,16 @@
     </div>
     <ul>
         {% for profesor in profesores %}
-            <li>{{ profesor.nombre }}</li>
+            <li>{{ profesor.nombre }} {{ profesor.apellido }}</li>
         {% endfor %}
     </ul>
+    <div style="margin-top: 60px;" class="py-lg-4">
+        <h2>Alta Profesor</h2>
+    </div>
+    <form action="{% url 'clase:profesores_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
 {% endblock content %}
 

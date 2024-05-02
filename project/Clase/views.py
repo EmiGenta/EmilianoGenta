@@ -48,7 +48,18 @@ def estudiantes_list(request):
         estudiantes = Estudiante.objects.filter(nombre__icontains=consulta)
     else:
         estudiantes = Estudiante.objects.all()
-    return render(request, 'clase/estudiantes_list.html', context={'estudiantes': estudiantes})
+    form = forms.EstudianteForm()
+    return render(request, 'clase/estudiantes_list.html', context={"form": form, 'estudiantes': estudiantes})
+
+def estudiantes_create(request):
+    if request.method == "POST":
+        form = forms.EstudianteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("clase:estudiantes_list")
+    else:  # request.method == "GET"
+        form = forms.EstudianteForm()
+    return render(request, "clase/estudiantes_list.html", {"form": form})
 
 def profesores_list(request):
     consulta = request.GET.get("consulta", None)
@@ -56,4 +67,15 @@ def profesores_list(request):
         profesores = Profesor.objects.filter(nombre__icontains=consulta)
     else:
         profesores = Profesor.objects.all()
-    return render(request, 'clase/profesores_list.html', context={'profesores': profesores})
+    form = forms.ProfesorForm()
+    return render(request, 'clase/profesores_list.html', context={"form": form, 'profesores': profesores})
+
+def profesores_create(request):
+    if request.method == "POST":
+        form = forms.ProfesorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("clase:profesores_list")
+    else:  # request.method == "GET"
+        form = forms.ProfesorForm()
+    return render(request, "clase/profesores_list.html", {"form": form})

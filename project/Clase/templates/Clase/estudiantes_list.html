@@ -13,8 +13,16 @@
     </div>
     <ul>
         {% for estudiante in estudiantes %}
-            <li>{{ estudiante.nombre }}</li>
+            <li>{{ estudiante.nombre }} {{ estudiante.apellido }}</li>
         {% endfor %}
     </ul>
+    <div style="margin-top: 60px;" class="py-lg-4">
+        <h2>Ingresar Estudiante</h2>
+    </div>
+    <form action="{% url 'clase:estudiantes_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
 {% endblock content %}
 
