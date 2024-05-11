@@ -1,20 +1,20 @@
-{% extends 'core/base.html' %}
 {% block titulo %}
     Estudiante: +Info
 {% endblock titulo %}
-
 {% block contenido %}
-
-    <ul>
-        <li>Nombre: {{ estudiante.nombre }}</li>
-        <li>Apellido: {{ estudiante.apellido }}</li>
-        <li>Cédula_de_Identidad: {{ estudiante.cedula_de_identidad }}</li>
-        <li>Email: {{ estudiante.email }}</li>
-        <li>País: {{ estudiante.pais }}</li>
-        <li>Formación Académica: {{ estudiante.formacion_fcademica }}</li>
-    </ul>
+    {% if estudiante %}
+        <ul>
+            <li>Nombre: {{ estudiante.nombre }}</li>
+            <li>Apellido: {{ estudiante.apellido }}</li>
+            <li>Cédula de Identidad: {{ estudiante.cedula_de_identidad }}</li>
+            <li>Email: {{ estudiante.email }}</li>
+            <li>País: {{ estudiante.pais }}</li>
+            <li>Formación Académica: {{ estudiante.formacion_academica }}</li>
+        </ul>
+    {% else %}
+        <p>No se encontraron datos para este estudiante.</p>
+    {% endif %}
     <div class="fs-3 pb-4">
         <a href="{% url 'clase:estudiantes_list' %}">Volver</a>
     </div>
-
 {% endblock contenido %}
